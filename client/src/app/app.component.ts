@@ -10,7 +10,7 @@ import { GlobalsService } from './globals/globals.service';
 
 
 export class AppComponent {
-  title = 'TriAlhambra App';
+  title = 'MoWizz 2';
 
   constructor ( protected globals: GlobalsService, private router: Router ) {
     const me = this,
