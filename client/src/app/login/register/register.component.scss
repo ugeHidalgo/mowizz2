@@ -1,0 +1,49 @@
+label {
+  padding-left: 10px;
+}
+
+.user-view {
+  padding: 20px;
+}
+
+.user-card {
+  /* For mobile phones: */
+  width: 100%;
+
+  /* For tablets: */
+  @media only screen and (min-width: 600px) {
+      width: 80%;
+  }
+
+  /* For desktops: */
+  @media only screen and (min-width: 768px) {
+      width: 50%;
+  }
+}
+
+.card-up {
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.card-form {
+  padding: 0 40px 0 40px;
+}
+
+.username-title {
+  color: white;
+  font: bold;
+}
+
+.profile-image{
+  margin: -40px 0px 5px 0px;
+  height: 100px;
+}
+
+.alert {
+  font-size: 11px
+}
+
+mat-icon {
+  padding-right: 30px;
+}

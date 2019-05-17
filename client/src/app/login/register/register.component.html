@@ -1,0 +1,100 @@
+<div *ngIf="user" class="user-view">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <mdb-card class="testimonial-card user-card mx-auto">
+                        <div class="card-up indigo lighten-1">
+                            <!--Avatar-->
+                            <div class="avatar mx-auto text-center">
+                                <img src="../../../assets/user-icon2.png" class="profile-image rounded-circle">
+                            </div>
+                            <!--Title: Username-->
+                            <mdb-card-title class="text-center username-title">
+                                <h4>Registro de nuevo usuario</h4>
+                            </mdb-card-title>
+                        </div>
+                        <mdb-card-body>
+                            <div class="container-fluid">
+                                <form [formGroup]="validatingForm">
+
+                                    <div class="row">
+                                        <div class="md-form form-sm col-md-5">
+                                            <mat-form-field class="full-width-form-field" >
+                                                <input matInput type="text" formControlName="username" placeholder="Nombre de usuario:" required>
+                                                <mat-error *ngFor="let validation of validation_messages.username">
+                                                    <mat-error *ngIf="validatingForm.get('username').hasError(validation.type) && (validatingForm.get('username').dirty || validatingForm.get('username').touched)">
+                                                        {{validation.message}}
+                                                    </mat-error>
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="md-form form-sm col-md-7">
+                                            <mat-form-field class="full-width-form-field" >
+                                                <mat-icon matPrefix><i class="fa fa-envelope"></i></mat-icon>
+                                                <input matInput type="email" formControlName="email" placeholder="Correo electrónico:" required>
+                                                <mat-error *ngFor="let validation of validation_messages.email">
+                                                    <mat-error *ngIf="validatingForm.get('email').hasError(validation.type) && (validatingForm.get('email').dirty || validatingForm.get('email').touched)">
+                                                        {{validation.message}}
+                                                    </mat-error>
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="md-form form-sm col-md-4">
+                                            <mat-form-field class="full-width-form-field" >
+                                                <input matInput type="text" formControlName="firstname" placeholder="Nombre:" >
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="md-form form-sm col-md-8">
+                                            <mat-form-field class="full-width-form-field" >
+                                                <input matInput type="text" formControlName="lastname" placeholder="Apellidos:" >
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="md-form form-sm col-md-6">
+                                            <mat-form-field class="full-width-form-field" >
+                                                <mat-icon matPrefix><i class="fa fa-lock"></i></mat-icon>
+                                                <input matInput type="password" formControlName="password" placeholder="Contraseña:" required>
+                                                <mat-error *ngFor="let validation of validation_messages.password">
+                                                    <mat-error *ngIf="validatingForm.get('password').hasError(validation.type) && (validatingForm.get('password').dirty || validatingForm.get('password').touched)">
+                                                        {{validation.message}}
+                                                    </mat-error>
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="md-form form-sm col-md-6">
+                                            <mat-form-field class="full-width-form-field" >
+                                                <mat-icon matPrefix><i class="fa fa-lock"></i></mat-icon>
+                                                <input matInput type="password" formControlName="password2" placeholder="Contraseña:" required>
+                                                <mat-error *ngFor="let validation of validation_messages.password2">
+                                                    <mat-error *ngIf="validatingForm.get('password2').hasError(validation.type) && (validatingForm.get('password2').dirty || validatingForm.get('password2').touched)">
+                                                        {{validation.message}}
+                                                    </mat-error>
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </mdb-card-body>
+                        <div class="card-footer">
+                            <div class="options text-center mt-1">
+                                <p>¿Tienes ya una cuenta de usuario? <a [routerLink]="['/login']">Inicio de sesión</a></p>
+                            </div>
+                            <div class="text-center mt-2">
+                                <button class="btn btn-info waves-light" mdbRippleRadius (click)="register()" [disabled]="validatingForm.invalid">
+                                    Crear usuario
+                                    <i class="fa fa-sign-in ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                </mdb-card>
+            </div>
+        </div>
+    </div>
+
+
+
