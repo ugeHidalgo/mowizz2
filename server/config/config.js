@@ -27,6 +27,7 @@ module.exports = {
     //host: process.env.HOST || '0.0.0.0',
     host: process.env.HOST || '192.168.1.25',
     port: process.env.PORT || 3000,
+
     secure: {
         ssl: true,
         privateKey: './config/sslcerts/key.pem',
@@ -53,7 +54,7 @@ module.exports = {
         port: 465,
         secure: true,
         user: 'trialhambranoreply@gmail.com',
-        pass: 'trialhambra12A.g',
+        pass: 'trialhambra12A.g',  //This is not the real password.
         subject: 'Correo de recuperación de cuenta triAlhambra',
         recoveryUrl: 'http://192.168.1.25:4200/recover/'
     }
