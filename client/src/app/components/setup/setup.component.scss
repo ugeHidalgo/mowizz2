@@ -1,0 +1,55 @@
+.user-view {
+  padding: 20px;
+}
+
+.user-card {
+  /* For mobile phones: */
+  width: 100%;
+
+  /* For tablets: */
+  @media only screen and (min-width: 600px) {
+      width: 80%;
+  }
+
+  /* For desktops: */
+  @media only screen and (min-width: 768px) {
+      width: 50%;
+  }
+}
+
+.card-body {
+  margin: 20px;
+  padding: 0;
+}
+
+.card-up {
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.card-form {
+  padding: 0;
+}
+
+.username-title {
+  color: white;
+  font: bold;
+}
+
+.profile-image {
+  margin: -40px 0px 5px 0px;
+  height: 100px;
+}
+
+.checkbox-area {
+  margin-top: 30px;
+}
+
+.mat-form-field {
+  padding: 0;
+  margin: 0;
+}
+
+.hidden {
+  display:none;
+}

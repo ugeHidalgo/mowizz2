@@ -40,6 +40,7 @@ import { MAT_DATE_LOCALE } from '@angular/material';
 import { PasswordComponent } from './login/password/password.component';
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
 import { RecoverPasswordComponent } from './login/recover-password/recover-password.component';
+import { SetupComponent } from './components/setup/setup.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { RecoverPasswordComponent } from './login/recover-password/recover-passw
     DashboardComponent,
     PasswordComponent,
     ForgotPasswordComponent,
-    RecoverPasswordComponent
+    RecoverPasswordComponent,
+    SetupComponent
   ],
   imports: [
     BrowserModule,

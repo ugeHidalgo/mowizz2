@@ -6,6 +6,7 @@ import { PageNotFoundComponent } from '../components/main/not-found/not-found.co
 
 // Routing Modules
 import { LoginRoutingModule } from '../login/login-routing.module';
+import { SetupRoutingModule } from '../components/setup/setup-routing.module';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     LoginRoutingModule,
+    SetupRoutingModule,
     RouterModule.forRoot(routes)
   ],
 

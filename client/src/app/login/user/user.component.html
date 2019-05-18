@@ -94,7 +94,7 @@
                             <button class="btn btn-sm btn-outline-dark-green" (click)="onClickChangePassword()">
                                 <i class="fa fa-key ml-1"> Cambiar contraseña</i>
                             </button>
-                            <button class="btn btn-sm btn-outline-dark-green" (click)="onClickChangeSetup()" [disabled]="!user.admin">
+                            <button class="btn btn-sm btn-outline-dark-green" (click)="onClickChangeSetup()" [disabled]="!user.admin" [routerLink]="['/setup']">
                                 <i class="fa fa-tools ml-1"></i>
                             </button>
                         </div>
