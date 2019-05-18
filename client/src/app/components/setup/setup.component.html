@@ -13,7 +13,34 @@
                       </mdb-card-title>
                   </div>
                   <mdb-card-body class="card-body">
-
+                        <form [formGroup]="validatingForm" class="card-form">
+                            <div class="container">
+                                <mat-card class="recovery-mail-card">Correo recuperacion cuentas
+                                <div class="row"> <!--Recovery mail data -->
+                                    <div class="md-form form-sm col-sm-7">
+                                        <mat-form-field class="full-width-form-field" >
+                                            <input matInput type="email" formControlName="email" placeholder="Correo electrónico:" required>
+                                            <!-- <mat-error *ngFor="let validation of validation_messages.email">
+                                                <mat-error *ngIf="forgotForm.get('email').hasError(validation.type) && (forgotForm.get('email').dirty || forgotForm.get('email').touched)">
+                                                    {{validation.message}}
+                                                </mat-error>
+                                            </mat-error> -->
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="md-form form-sm col-sm-5">
+                                        <mat-form-field class="full-width-form-field" >
+                                            <input matInput type="password" formControlName="password" placeholder="Password correo:" required>
+                                            <!-- <mat-error *ngFor="let validation of validation_messages.email">
+                                                <mat-error *ngIf="forgotForm.get('email').hasError(validation.type) && (forgotForm.get('email').dirty || forgotForm.get('email').touched)">
+                                                    {{validation.message}}
+                                                </mat-error>
+                                            </mat-error> -->
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                </mat-card>
+                            </div>
+                        </form>
                   </mdb-card-body>
                   <div class="card-footer">
                     <button class="btn btn-sm btn-outline-danger" (click)="onClickRefresh()">
