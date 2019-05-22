@@ -3,6 +3,8 @@ import { slideInDownAnimation } from 'src/app/animations';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Setup } from '../../models/setup.model';
 import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+import { SetupService } from 'src/app/services/setup/setup.service';
 
 
 @Component({
@@ -30,9 +32,14 @@ export class SetupComponent implements OnInit {
   }
 
   constructor(
-    private fb: FormBuilder
+    private setupService: SetupService,
+    private fb: FormBuilder,
+    public toastr: ToastrService
   ) {
-    this.createForm();
+    const me = this;
+
+    me.createForm();
+    me.setup = me.getSetup();
   }
 
   ngOnInit() {
@@ -56,6 +63,17 @@ export class SetupComponent implements OnInit {
   }
 
   onClickSave() {
+    const me = this;
+
+    if (me.validatingForm.invalid) return;
+
+    me.setup = this.getFormData();
+    me.setupService.updateSetup(me.setup)
+      .subscribe( () => {
+          me.rebuildForm();
+          me.toastr.success('Successfully saved.');
+        }
+      );
   }
 
   // FormModel Methods
@@ -93,10 +111,19 @@ export class SetupComponent implements OnInit {
           formModel = me.validatingForm.value,
           newSetup: Setup = me.setup;
 
-    newSetup.recoveryMail = '';
-    newSetup.recoveryMailPassword = '';
+    newSetup.recoveryMail = formModel.recoveryMail;
+    newSetup.recoveryMailPassword = formModel.recoveryMailPassword;
 
     return newSetup;
+  }
+
+  //Private methods
+  getSetup() : Setup {
+    const actualSetup = new Setup();
+    actualSetup.recoveryMail = 'mail@mail.com';
+    actualSetup.recoveryMailPassword = '123456';
+
+    return actualSetup;
   }
 
 }
