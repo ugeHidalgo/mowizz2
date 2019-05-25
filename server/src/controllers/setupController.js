@@ -5,7 +5,9 @@
  * Module dependencies.
  */
 var setupManager = require('../managers/setupManager'),
-    auth = require ('../auth/authMiddleware');
+    config = require('../../config/config'),
+    auth = require ('../auth/authMiddleware'),
+    hasher = require('../auth/hasher');
 
 /**
  * Public methods.
@@ -47,7 +49,23 @@ module.exports.init = function (app) {
               response.status(201).send(updatedSetup);
            }
       });
-  });
+    });
 
+    setupManager.getSetup(function(error, setup){
+        var pass;
+
+        if (error){
+            console.log('Setup controller returns an error (400)');
+        } else {
+            if (setup.length === 0 ) {
+                console.log('No setup found');
+            } else {
+                console.log('Setup controller returns setup successfully.');
+                pass = hasher.decrypt(setup[0].recoveryMailPassword, setup[0].salt)
+                config.recoveryMail.user = setup[0].recoveryMail;
+                config.recoveryMail.pass = pass;
+            }
+        }
+    });
     console.log('Setup controller initialized');
 };

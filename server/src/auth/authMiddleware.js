@@ -66,7 +66,7 @@ module.exports.authenticateUser = function( receivedUser, callbackFn) {
         if (!userInDb || userInDb.length === 0) { return callbackFn(null, notFoundUser); }
 
         userInDb = userInDb[0];
-        receivedHashedPassword = hasher.computeHash(receivedUser.password, userInDb.salt);
+        receivedHashedPassword = hasher.encrypt(receivedUser.password, userInDb.salt);
         storedHashedPassword = userInDb.password;
 
         if (receivedHashedPassword !== storedHashedPassword) {

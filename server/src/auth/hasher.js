@@ -4,7 +4,8 @@
 /**
  * Module dependencies.
  */
-var crypto = require('crypto');  //Build into node
+var crypto = require('crypto'),
+    algorithm = 'aes-256-ctr';
 
 
 module.exports.createSalt = function () {
@@ -12,9 +13,18 @@ module.exports.createSalt = function () {
     return crypto.randomBytes(Math.ceil(len/2)).toString('hex').substring(0,len);
 };
 
-module.exports.computeHash = function (sourceString, salt) {
-    var hmac = crypto.createHmac('sha1', salt),
-        hash = hmac.update(sourceString);
-    
-    return hash.digest('hex');
+module.exports.encrypt =  function (text, salt) {
+    var cipher = crypto.createCipher(algorithm, salt),
+        crypted = cipher.update(text,'utf8','hex');
+
+  crypted += cipher.final('hex');
+  return crypted;
+};
+
+module.exports.decrypt =  function (encriptedText, salt) {
+    var decipher = crypto.createDecipher(algorithm, salt),
+        dec = decipher.update(encriptedText, 'hex', 'utf8');
+
+    dec += decipher.final('utf8');
+    return dec;
 };

@@ -45,7 +45,7 @@ module.exports.updateUserPassword = function (username, hashedPassword, password
 
     var salt = hasher.createSalt(),
         updatedValues = {
-            password: hasher.computeHash(password, salt),
+            password: hasher.encrypt(password, salt),
             salt: salt,
             updated: new Date()
          };
@@ -84,7 +84,7 @@ function createNewUser (user, callbackFn){
             var newUser = new User(user),
             salt = hasher.createSalt();
 
-            newUser.password = hasher.computeHash(user.password, salt);
+            newUser.password = hasher.encrypt(user.password, salt);
             newUser.salt = salt;
 
             newUser.save(function (error) {
@@ -115,7 +115,7 @@ function updateExistingUser (user, callbackFn) {
     };
 
     if (user.password !== ''){
-        updatedValues.password = hasher.computeHash(user.password, salt);
+        newUser.password = hasher.encrypt(user.password, salt);
         updatedValues.salt = salt;
     }
 
