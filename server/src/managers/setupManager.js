@@ -4,11 +4,9 @@
 /**
  * Module dependencies.
  */
-var mongoose = require ('mongoose'),
-    config = require('../../config/config'),
+var config = require('../../config/config'),
     hasher = require ('../auth/hasher'),
-    Setup = require ('../models/setup'),
-    User = require ('../models/user');
+    Setup = require ('../models/setup');
 
 /**
  * Public methods.
@@ -17,13 +15,14 @@ module.exports.getSetup = function (callbackFn) {
     Setup.find({}, callbackFn);
 };
 
-module.exports.saveSetup = function (setup, callbackFn) {
+module.exports.saveSetup = function (setupToBeSaved, callbackFn) {
 
-    Setup.find({},(error, data) => {
-      if (data.length > 0) {
-        updateSetup(setup, callbackFn);
+    Setup.find({},(error, existingSetup) => {
+      if (existingSetup.length > 0) {
+        setupToBeSaved.salt = existingSetup[0].salt;
+        updateSetup(setupToBeSaved, callbackFn);
       } else {
-        createNewSetup(setup, callbackFn);
+        createNewSetup(setupToBeSaved, callbackFn);
       }
     });
 };
@@ -51,26 +50,24 @@ function createNewSetup (setup, callbackFn){
 
 function updateSetup (setup, callbackFn) {
 
-    var salt = hasher.createSalt(),
-        updatedValues = {
+    var updatedValues = {
           recoveryMail: String,
           recoveryMailPassword: String,
     };
 
     updatedValues.recoveryMail = setup.recoveryMail;
     updatedValues.recoveryMailPassword = hasher.encrypt(setup.recoveryMailPassword, setup.salt);
-    updatedValues.salt = setup.salt;
 
-    User.findOneAndUpdate(
+    Setup.findOneAndUpdate(
     {},
     { $set: updatedValues },
     function (error, updatedSetup){
         if (error){
             callbackFn(error, null);
         } else {
-            updateSetupOnConfigData(updatedSetup[0]);
+            updateSetupOnConfigData(updatedSetup);
             console.log ('Setup data updated successfully');
-            callbackFn(null, setup)
+            callbackFn(null, updatedSetup)
         }
     });
 };

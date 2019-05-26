@@ -46,16 +46,16 @@ module.exports = {
         secure: false
     },
     sessionKey: 'sessionId',
-    sessionSecret: process.env.SESSION_SECRET || 'anystringhereisvalidtoencript',
+    sessionSecret: process.env.SESSION_SECRET || 'anystringhereisvalidtoencript', //Encrypt is done using own salt.
     sessionJsonWebTokenExpires: '10h',
-    recoveryMail: {
+    recoveryMail: { //This data is overriden with setup data stored in DB.
         service: 'gmail',
         host: 'smtp.gmail.com',
         port: 465,
         secure: true,
         user: 'trialhambranoreply@gmail.com',
         pass: 'trialhambra12A.g',  //This is not the real password.
-        subject: 'Correo de recuperación de cuenta triAlhambra',
+        subject: 'Correo de recuperación de cuenta MoWizz',
         recoveryUrl: 'http://192.168.1.25:4200/recover/'
     }
 };
