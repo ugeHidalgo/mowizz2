@@ -19,6 +19,14 @@ export class SetupService {
   }
 
   /**.*/
+  getSetup(): Observable<Setup> {
+    const me = this,
+          httpOptions = me.createHttpOptionsWithToken(),
+          setup = me.http.get<Setup>(me.setupUrl, httpOptions);
+    return setup;
+  }
+
+  /**.*/
   updateSetup(setup: Setup): Observable<Setup> {
     const me = this,
           httpOptions = me.createHttpOptionsWithToken();

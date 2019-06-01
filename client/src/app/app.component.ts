@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalsService } from './globals/globals.service';
+import { SetupService } from './services/setup/setup.service';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +13,19 @@ import { GlobalsService } from './globals/globals.service';
 export class AppComponent {
   title = 'MoWizz 2';
 
-  constructor ( protected globals: GlobalsService, private router: Router ) {
+  constructor (
+    protected globals: GlobalsService,
+    protected setupService: SetupService,
+    private router: Router
+    ) {
     const me = this,
           username = me.globals.getUserNameFromLocalStorage();
 
     me.globals.setUser(username);
+    me.setupService.getSetup()
+      .subscribe( setup => {
+          me.globals.setSetup(setup);
+      });
   }
 
   onClick(link) {

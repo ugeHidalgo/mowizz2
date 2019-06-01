@@ -55,6 +55,7 @@ module.exports = {
         secure: true,
         user: 'trialhambranoreply@gmail.com',
         pass: 'trialhambra12A.g',  //This is not the real password.
+        salt: 'anystrimg', //Not the real one.
         subject: 'Correo de recuperación de cuenta MoWizz',
         recoveryUrl: 'http://192.168.1.25:4200/recover/'
     }

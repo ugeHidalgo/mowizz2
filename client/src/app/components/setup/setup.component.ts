@@ -5,6 +5,7 @@ import { Setup } from '../../models/setup.model';
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { SetupService } from 'src/app/services/setup/setup.service';
+import { GlobalsService } from 'src/app/globals/globals.service';
 
 
 @Component({
@@ -32,17 +33,18 @@ export class SetupComponent implements OnInit {
   }
 
   constructor(
+    protected globals: GlobalsService,
     private setupService: SetupService,
     private fb: FormBuilder,
     public toastr: ToastrService
   ) {
-    const me = this;
-
-    me.createForm();
-    me.setup = me.getSetup();
+   this.createForm();
   }
 
   ngOnInit() {
+    const me = this;
+
+    me.setup = me.getSetup();
   }
 
   ngOnChanges() {
@@ -119,9 +121,11 @@ export class SetupComponent implements OnInit {
 
   //Private methods
   getSetup() : Setup {
-    const actualSetup = new Setup();
-    actualSetup.recoveryMail = 'mail@mail.com';
-    actualSetup.recoveryMailPassword = '123456';
+    const me = this,
+          actualSetup = new Setup();
+
+    actualSetup.recoveryMail = me.globals.setup.recoveryMail;
+    actualSetup.recoveryMailPassword = me.globals.setup.recoveryMailPassword;
 
     return actualSetup;
   }
