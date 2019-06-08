@@ -22,10 +22,6 @@ export class AppComponent {
           username = me.globals.getUserNameFromLocalStorage();
 
     me.globals.setUser(username);
-    me.setupService.getSetup()
-      .subscribe( setup => {
-          me.globals.setSetup(setup);
-      });
   }
 
   onClick(link) {

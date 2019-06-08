@@ -9,25 +9,7 @@ var url = require ('url'),
     nodemailer = require('nodemailer'),
     smtpTransport = require('nodemailer-smtp-transport'),
     userManager = require('../managers/userManager'),
-    auth = require ('../auth/authMiddleware'),
-
-    transporter = nodemailer.createTransport(smtpTransport({
-        service: config.recoveryMail.service,
-        host: config.recoveryMail.host,
-        port: config.recoveryMail.port,
-        secure: config.recoveryMail.secure,
-        auth: {
-            user: config.recoveryMail.user,
-            pass: config.recoveryMail.pass
-        }
-    })),
-
-    mailOptions = {
-        from: config.recoveryMail.user,
-        to: 'ugehidalgo@gmail.com',
-        subject: config.recoveryMail.subject,
-        text: 'Usa el siguiente enlace para recuperar tu cuenta: '
-    };
+    auth = require ('../auth/authMiddleware');
 
 /**
  * Public methods.
@@ -143,6 +125,23 @@ module.exports.init = function (app) {
      * Private methods.
      */
     function sendMailToRecover (response, userToRecover, userPass) {
+        var transporter = nodemailer.createTransport(smtpTransport({
+                service: config.recoveryMail.service,
+                host: config.recoveryMail.host,
+                port: config.recoveryMail.port,
+                secure: config.recoveryMail.secure,
+                auth: {
+                    user: config.recoveryMail.user,
+                    pass: config.recoveryMail.pass
+                }
+            })),
+
+            mailOptions = {
+                from: config.recoveryMail.user,
+                to: 'ugehidalgo@gmail.com',
+                subject: config.recoveryMail.subject,
+                text: 'Usa el siguiente enlace para recuperar tu cuenta: '
+            };
 
         mailOptions.text += prepareRecoveryUrl(userToRecover, userPass);
 

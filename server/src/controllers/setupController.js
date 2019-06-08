@@ -63,10 +63,9 @@ module.exports.init = function (app) {
                 console.log('No setup found');
             } else {
                 console.log('Setup controller returns setup successfully.');
-                //pass = hasher.decrypt(setup[0].recoveryMailPassword, setup[0].salt)
+                pass = hasher.decrypt(setup[0].recoveryMailPassword, setup[0].salt)
                 config.recoveryMail.user = setup[0].recoveryMail;
-                //config.recoveryMail.pass = pass;
-                config.recoveryMail.pass = setup[0].recoveryMailPassword;
+                config.recoveryMail.pass = pass;
                 config.recoveryMail.salt = setup[0].salt;
             }
         }
