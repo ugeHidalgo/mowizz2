@@ -31,7 +31,7 @@ module.exports.init = function (app) {
                     response.status(201).send(true);
                 } else if (users[0].eMail === mailToRecover) {
                     userPass = users[0].password;
-                    sendMailToRecover(response, userToRecover, userPass);
+                    sendMailToRecover(response, userToRecover, mailToRecover, userPass);
                 } else  {
                     console.log('Recover password: Bad email for username to recover. No mail was sent.')
                     response.status(201).send(true);
@@ -124,7 +124,7 @@ module.exports.init = function (app) {
     /**
      * Private methods.
      */
-    function sendMailToRecover (response, userToRecover, userPass) {
+    function sendMailToRecover (response, userToRecover, mailToRecover, userPass) {
         var transporter = nodemailer.createTransport(smtpTransport({
                 service: config.recoveryMail.service,
                 host: config.recoveryMail.host,
@@ -138,7 +138,7 @@ module.exports.init = function (app) {
 
             mailOptions = {
                 from: config.recoveryMail.user,
-                to: 'ugehidalgo@gmail.com',
+                to: mailToRecover,
                 subject: config.recoveryMail.subject,
                 text: 'Usa el siguiente enlace para recuperar tu cuenta: '
             };
