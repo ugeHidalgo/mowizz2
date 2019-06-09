@@ -1,4 +1,5 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
+import { Location } from '@angular/common';
 import { slideInDownAnimation } from 'src/app/animations';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Setup } from '../../models/setup.model';
@@ -34,6 +35,7 @@ export class SetupComponent implements OnInit {
 
   constructor(
     protected globals: GlobalsService,
+    private location: Location,
     private setupService: SetupService,
     private fb: FormBuilder,
     public toastr: ToastrService
@@ -58,6 +60,10 @@ export class SetupComponent implements OnInit {
   }
 
   // Buttons actions
+  onClickGoBack() {
+    this.location.back();
+  }
+
   onClickRefresh() {
     const me = this;
 
