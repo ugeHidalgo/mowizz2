@@ -22,6 +22,11 @@ export class AppComponent {
           username = me.globals.getUserNameFromLocalStorage();
 
     me.globals.setUser(username);
+    me.setupService.getSetup().subscribe(
+      (setup) => {
+        me.globals.setup = setup;
+      }
+    );
   }
 
   onClick(link) {

@@ -47,6 +47,7 @@ export class SetupComponent implements OnInit {
     const me = this;
 
     me.setup = me.getSetup();
+    me.rebuildForm();
   }
 
   ngOnChanges() {
