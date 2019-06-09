@@ -1,0 +1,10 @@
+#!/bin/bash
+clear;
+echo --------Seeding Accounts -----------
+mongo < seedAccounts.sh;
+echo ------------------------------------
+echo
+echo
+echo --------Seeding Concepts -----------
+mongo < seedConcepts.sh;
+echo ------------------------------------
