@@ -7,6 +7,7 @@ import { PageNotFoundComponent } from '../components/main/not-found/not-found.co
 // Routing Modules
 import { LoginRoutingModule } from '../login/login-routing.module';
 import { SetupRoutingModule } from '../components/setup/setup-routing.module';
+import { AccountsRoutingModule } from '../components/main/account/account-routing.module';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   imports: [
     LoginRoutingModule,
     SetupRoutingModule,
+    AccountsRoutingModule,
     RouterModule.forRoot(routes)
   ],
 

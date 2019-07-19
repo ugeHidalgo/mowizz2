@@ -11,6 +11,7 @@ import { ToastrCustomOptions } from './messages/toastr/toastrCustomOptions';
 import { MDBBootstrapModule } from 'angular-bootstrap-md'; // MDBootstrap: Used for modals.
 import { AppMaterialsModule } from './app-modules/app-materials.module'; // Angular material design components https://material.angular.io/
 import { MatCheckboxComponent } from './components/grid/checkbox/mat-checkbox.component';
+import { MAT_DATE_LOCALE } from '@angular/material';
 
 // App modules
 import { AppRoutingModule } from './app-modules/app-routing.module';
@@ -29,18 +30,21 @@ import { MessageService } from './services/message/message.service';
 import { PageNotFoundComponent } from './components/main/not-found/not-found.component';
 import { MessagesComponent } from './messages/messages/messages.component';
 import { MainFooterComponent } from './components/main/main-footer/main-footer.component';
+
 import { DeleteDialogComponent } from './components/dialogs/delete-dialog/delete-dialog.component';
 import { SuccessDialogComponent } from './components/dialogs/success-dialog/success-dialog.component';
 import { ErrorDialogComponent } from './components/dialogs/error-dialog/error-dialog.component';
+
+import { UserComponent } from './login/user/user.component';
 import { LoginComponent } from './login/login/login.component';
 import { RegisterComponent } from './login/register/register.component';
-import { UserComponent } from './login/user/user.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { MAT_DATE_LOCALE } from '@angular/material';
 import { PasswordComponent } from './login/password/password.component';
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
 import { RecoverPasswordComponent } from './login/recover-password/recover-password.component';
+
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { SetupComponent } from './components/setup/setup.component';
+import { AccountsComponent } from './components/main/account/accounts/accounts.component';
 
 
 @NgModule({
@@ -60,7 +64,8 @@ import { SetupComponent } from './components/setup/setup.component';
     PasswordComponent,
     ForgotPasswordComponent,
     RecoverPasswordComponent,
-    SetupComponent
+    SetupComponent,
+    AccountsComponent
   ],
   imports: [
     BrowserModule,
