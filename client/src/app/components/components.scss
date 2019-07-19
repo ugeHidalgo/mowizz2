@@ -1,0 +1,39 @@
+.mowizz-grid-data-view {
+  padding: 20px;
+}
+
+
+.mowizz-data-card {
+  /* For mobile phones: */
+  width: 100%;
+
+  /* For tablets: */
+  @media only screen and (min-width: 600px) {
+      width: 80%;
+  }
+
+  /* For desktops: */
+  @media only screen and (min-width: 768px) {
+      width: 50%;
+  }
+}
+
+.mowizz-card-image {
+  margin: -40px 0px 5px 0px;
+  height: 100px;
+}
+
+.mowizz-card-title {
+  color: white;
+  font: bold;
+}
+
+.mowizz-card-body {
+  margin: 20px;
+  padding: 0;
+}
+
+.mowizz-card-up {
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}

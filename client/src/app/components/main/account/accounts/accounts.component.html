@@ -1,3 +1,34 @@
-<p>
-  accounts works!
-</p>
+<div class="mowizz-grid-data-view">
+  <div class="row justify-content-center">
+      <div class="col-sm-12">
+          <mdb-card class="testimonial-card mowizz-data-card mx-auto">
+                  <div class="mowizz-card-up indigo lighten-1">
+                      <!--Avatar-->
+                      <div class="avatar mx-auto text-center">
+                          <img src="../../../assets/piggy-bank-icon.png" class="mowizz-card-image rounded-circle">
+                      </div>
+                      <!--Title: Username-->
+                      <mdb-card-title class="text-center mowizz-card-title">
+                          <h4>Cuentas Bancarias</h4>
+                      </mdb-card-title>
+                  </div>
+                  <mdb-card-body class="mowizz-card-body">
+
+                  </mdb-card-body>
+                  <div class="card-footer">
+                          <button class="btn btn-sm btn-outline-danger" (click)="onClickRefreshButton()" [disabled]="true">
+                              <i class="fa fa-refresh ml-1"> Refrescar</i>
+                          </button>
+                          <button class="btn btn-sm btn-outline-dark-green" type="submit" (click)="onClickAddButton()" [disabled]="true">
+                              <i class="fa fa-save ml-1"> Añadir cuenta</i>
+                          </button>
+                          <button class="btn btn-sm btn-outline-dark-green" (click)="onClickEditButton()" [disabled]="true">
+                              <i class="fa fa-key ml-1"> Editar cuenta</i>
+                          </button>
+                      </div>
+          </mdb-card>
+      </div>
+  </div>
+</div>
+
+
