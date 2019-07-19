@@ -77,6 +77,13 @@ ___
 
 -5 Remote Data base can also be used hosted in mLab (Need to change local db config to remote. See dbConfig.js to change it)
 
+-6 Sample data for development and testing purpose: There are some scripts used to populate data in DB in folder /server/scripts/data
+
+    Run with:   ./seedAllData (Seeds all data)
+                ./seedAccounts (Seeds only bank accounts)
+                ./seedConcepts (Seeds only concept)
+                ...etc.
+
 
 ## Client side
 

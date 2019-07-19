@@ -7,9 +7,7 @@
 var chalk = require('chalk'),
     lodash = require('lodash'),
     config = require('../config/config'),
-    mongoose = require ('mongoose'),
-    seedTools = require ('./data/seedTools');
-    
+    mongoose = require ('mongoose');
 
 module.exports.connect = function init(callback) {
     var options = lodash.merge(config.db.options || {} );
@@ -19,9 +17,6 @@ module.exports.connect = function init(callback) {
     .then(function (connection) {
       // Enabling mongoose debug mode if required
       mongoose.set('debug', config.db.debug);
-
-      //Seed sample data used on development mode.
-      seedTools.seedSampleData();
 
       // Call callback FN
       if (callback) callback(connection.db);
@@ -45,7 +40,7 @@ module.exports.disconnect = function (cb) {
       .close(function (err) {
         console.log('--------------------------');
         console.info(chalk.yellow('Disconnected from MongoDB.'));
-        console.log('--------------------------');       
+        console.log('--------------------------');
         return cb(err);
       });
   };
