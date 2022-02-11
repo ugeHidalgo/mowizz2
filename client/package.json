@@ -26,7 +26,7 @@
     "@types/chart.js": "^2.7.45",
     "ag-grid-angular": "^20.1.0",
     "ag-grid-community": "^20.1.0",
-    "ajv": "^6.9.1",
+    "ajv": "^6.12.3",
     "angular-bootstrap-md": "^7.4.0",
     "bootstrap": "^4.3.1",
     "chart.js": "^2.5.0",
